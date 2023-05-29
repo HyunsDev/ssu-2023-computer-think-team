@@ -1,9 +1,8 @@
-from abc import ABCMeta, abstractmethod
 import requests
 from bs4 import BeautifulSoup
 
 
-class MenuParser(metaclass=ABCMeta):
+class MenuParser:
     def __init__(self, date, cafeteria_type) -> None:
         self.date = date
         self.cafeteria_type = cafeteria_type

@@ -2,6 +2,7 @@ import tkinter as tk
 import random
 from menu_parser import MenuParser
 import json
+from datetime import datetime
 
 restaurants = []
 with open("data.json") as f:
@@ -98,12 +99,15 @@ root.geometry("1280x720")
 
 
 # 왼쪽 박스
+now = datetime.now().strftime("%Y%m%d")
+
 left_box = tk.Frame(root, padx=5, pady=5)
 left_box.pack(side="left", expand=True, fill="both")
-title_label = tk.Label(left_box, text="오늘의 학식", font=("굴림체", 12))
+title_label = tk.Label(left_box, text=f"오늘의 학식\n{now}", font=("굴림체", 12))
 title_label.pack()
 
-menuParser = MenuParser("20230531", 1)
+
+menuParser = MenuParser(now, 1)
 menu = menuParser.get_menu_string()
 left_menu_label = tk.Label(
     left_box, text=menu, font=("굴림체", 12), bg="white", justify="left"
