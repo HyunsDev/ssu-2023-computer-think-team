@@ -13,6 +13,16 @@ class MenuParser(metaclass=ABCMeta):
         res = self.__get_menu()
         return res
 
+    def get_menu_string(self):
+        res = self.__get_menu()
+        menu_string = ""
+        for menu in res:
+            menu_string += f"[ {menu} ]\n"
+            for i in res[menu]["menus"]:
+                menu_string += f"{i}\n"
+            menu_string += "\n"
+        return menu_string
+
     def __get_soup(self):
         raw_data = requests.get(
             f"http://m.soongguri.com/m_req/m_menu.php?rcd={self.cafeteria_type}&sdt={self.date}"
