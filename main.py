@@ -12,18 +12,15 @@ menus = []
 for restaurant in restaurants:
     for menu in restaurant["menus"]:
         menus.append(
-            {"name": menu["name"], "price": menu["price"], "store": restaurant}
+            {"name": menu["name"], "price": menu["price"], "restaurant": restaurant}
         )
 
 
 def recommend_menu():
-    pass
-
-    chosen_restaurant = random.choice(restaurants)
-    chosen_menu = random.choice(chosen_restaurant["menus"])
+    chosen_menu = random.choice(menus)
 
     result_label.config(text=chosen_menu["name"])
-    store_label.config(text=f"가게: {chosen_restaurant['name']}")
+    store_label.config(text=f"가게: {chosen_menu['restaurant']['name']}")
     price_label.config(text=f"가격: {chosen_menu['price']}원")
 
 
@@ -45,7 +42,7 @@ def recommend_price_menu():
 
             if matched_menus:
                 random_menu = random.choice(matched_menus)
-                restaurant = random_menu["store"]
+                restaurant = random_menu["restaurant"]
 
                 result_label.config(text=random_menu["name"])
                 store_label.config(text=f"가게: {restaurant['name']}")
