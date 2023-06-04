@@ -107,7 +107,7 @@ title_label.pack()
 menuParser = MenuParser(now, 1)
 menu = menuParser.get_menu_string()
 left_menu_label = tk.Label(
-    left_box, text=menu, font=("굴림체", 12), bg="white", justify="left"
+    left_box, text=menu, font=("굴림체", 12), bg="white", justify="left", wraplength=400
 )
 left_menu_label.pack(fill="both")
 
